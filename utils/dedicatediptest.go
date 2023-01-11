@@ -104,12 +104,20 @@ func GetIPList(proxiesList []C.Proxy, n int) ([]string, []string) {
 		p := i.(C.Proxy)
 		resp, _ := endIPTest(p)
 		if resp.Ip != "" {
-			endIPList = append(endIPList, fmt.Sprintf("%s - %s, ISP: %s", resp.Ip, resp.Country, resp.Isp))
+			ipSegments := strings.Split(resp.Ip, ".")
+			ipSegments[len(ipSegments)-1] = "*"
+			ipSegments[len(ipSegments)-2] = "*"
+			maskedIp := strings.Join(ipSegments, ".")
+			endIPList = append(endIPList, fmt.Sprintf("%-10s - %-10s, %-10s, %s", maskedIp, resp.Country, resp.City, resp.Organization))
 		}
 		for idx := range entryIP(p.Addr()) {
 			resp, _ = entryIPTest(entryIP(p.Addr())[idx])
 			if resp.Ip != "" {
-				entryIPList = append(entryIPList, fmt.Sprintf("%s - %s, ISP: %s", resp.Ip, resp.Country, resp.Isp))
+				ipSegments := strings.Split(resp.Ip, ".")
+				ipSegments[len(ipSegments)-1] = "*"
+				ipSegments[len(ipSegments)-2] = "*"
+				maskedIp := strings.Join(ipSegments, ".")
+				entryIPList = append(entryIPList, fmt.Sprintf("%-10s - %-10s, %-10s, %s", maskedIp, resp.Country, resp.City, resp.Organization))
 			}
 		}
 		wg.Done()

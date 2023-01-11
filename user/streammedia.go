@@ -123,7 +123,7 @@ func (u *User) StreamMedia() {
 			Name:  fmt.Sprintf("stairunlocker_bot_result_%d.png", time.Now().Unix()),
 			Bytes: buffer.Bytes(),
 		})
-		wrapPNG.Caption = fmt.Sprintf("%s\n@stairunlock_test_bot\nProject: https://git.io/Jyl5l", telegramReport)
+		wrapPNG.Caption = fmt.Sprintf("%s\n@IpAndUnlockTestBot\nProject: https://git.io/Jyl5l", telegramReport)
 		_, err = u.Bot.Send(wrapPNG)
 		_ = u.DeleteMessage(u.MessageID)
 	}

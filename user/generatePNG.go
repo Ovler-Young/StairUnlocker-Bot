@@ -101,7 +101,7 @@ func generatePNG(streamMediaUnlockMap map[string][]string) (*bytes.Buffer, error
 	}
 	// bottom
 	dc.DrawString(fmt.Sprintf("Timestamp: %s", time.Now().UTC().Format(time.RFC3339)), 20, float64(H)-25)
-	str, strWidth = getStrWidth(dc, "Powered by @stairunlock_test_bot (https://git.io/Jyl5l)")
+	str, strWidth = getStrWidth(dc, "Powered by @IpAndUnlockTestBot (https://git.io/Jyl5l)")
 	dc.DrawString(str, W-20-strWidth, float64(H)-10)
 	buf := new(bytes.Buffer)
 	err = png.Encode(buf, dc.Image())

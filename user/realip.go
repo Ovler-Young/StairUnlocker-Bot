@@ -61,7 +61,7 @@ func (u *User) RealIP(messageText string) {
 			Name:  fmt.Sprintf("stairunlocker_bot_realIP_%d.txt", time.Now().Unix()),
 			Bytes: []byte(ipStat),
 		})
-		warpFile.Caption = fmt.Sprintf("%s\n%s\n@stairunlock_test_bot\nProject: https://git.io/Jyl5l", ipStatTitle, strings.Repeat("-", 25))
+		warpFile.Caption = fmt.Sprintf("%s\n%s\n@IpAndUnlockTestBot\nProject: https://git.io/Jyl5l", ipStatTitle, strings.Repeat("-", 25))
 		_, _ = u.Bot.Send(warpFile)
 		_ = u.DeleteMessage(u.MessageID)
 	}
